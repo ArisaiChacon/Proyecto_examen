@@ -186,8 +186,8 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
         currentIndex: 0,
-        selectedItemColor: Color.fromARGB(255, 236, 102, 6),
-        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.brown, // Color café para el ícono seleccionado
+        unselectedItemColor: Colors.black, // Color café para el ícono no seleccionado
         onTap: (int index) {
           switch (index) {
             case 0:
@@ -205,7 +205,7 @@ class HomeScreen extends StatelessWidget {
               );
               break;
             case 3:
-              // Navegar a la página de compras o realizar otra acción
+             
               break;
             default:
           }

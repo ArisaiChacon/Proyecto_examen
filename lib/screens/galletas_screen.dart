@@ -1,14 +1,41 @@
 import 'package:flutter/material.dart';
 
 class GalletasScreen extends StatelessWidget {
+  final List<Map<String, String>> products = [
+    {
+      'name': 'Galleta de Chocolate Blanco y Frambuesa',
+      'image': 'assets/images/galleta_choco_blanco.jpg',
+      'description': 'Deliciosa galleta de chocolate blanco con trozos de frambuesa.',
+    },
+    {
+      'name': 'Galleta de Limón y Almendra',
+      'image': 'assets/images/galleta_limon_almendra.jpg',
+      'description': 'Galleta crujiente de limón con trozos de almendra.',
+    },
+    {
+      'name': 'Galleta de Mantequilla con Chispas de Chocolate',
+      'image': 'assets/images/galleta_mantequilla_chocolate.jpg',
+      'description': 'Clásica galleta de mantequilla con generosas chispas de chocolate.',
+    },
+    {
+      'name': 'Galleta de Avena y Pasas',
+      'image': 'assets/images/galleta_avena_pasas.jpg',
+      'description': 'Galleta saludable de avena con pasas.',
+    },
+    {
+      'name': 'Galleta de Vainilla con Glaseado',
+      'image': 'assets/images/galleta_vainilla_glaseado.jpg',
+      'description': 'Suave galleta de vainilla cubierta con un delicioso glaseado.',
+    },
+    {
+      'name': 'Galleta de Coco y Chocolate Negro',
+      'image': 'assets/images/galleta_coco_chocolate.jpg',
+      'description': 'Galleta con sabor a coco y trozos de chocolate negro.',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> products = [
-      {'name': 'Galleta 1', 'image': 'assets/images/galletas.jpg'},
-      {'name': 'Galleta 2', 'image': 'assets/images/galletas.jpg'},
-      // Añade más productos aquí
-    ];
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Galletas'),
@@ -92,13 +119,19 @@ class GalletaDetailScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text(
-              'Descripción del producto aquí', // Reemplaza con la descripción real
+              product['description']!,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Acción cuando se agrega al carrito
+                // Aquí puedes implementar la lógica para agregar al carrito
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${product['name']} agregado al carrito'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
               },
               child: Text('Agregar al carrito'),
             ),

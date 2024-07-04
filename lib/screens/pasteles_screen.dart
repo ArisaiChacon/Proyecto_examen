@@ -4,9 +4,36 @@ class PastelesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> products = [
-      {'name': 'Pastel 1', 'image': 'assets/images/pasteles.jpg'},
-      {'name': 'Pastel 2', 'image': 'assets/images/pasteles.jpg'},
-      // Añade más productos aquí
+      {
+        'name': 'Pastel de Mocha',
+        'image': 'assets/images/pastel_mocha.jpg',
+        'description': 'Delicioso pastel de chocolate con crema de mocha.',
+      },
+      {
+        'name': 'Pastel de Fresas',
+        'image': 'assets/images/pastel_fresas.jpg',
+        'description': 'Pastel suave con capas de crema de fresas frescas.',
+      },
+      {
+        'name': 'Pastel de Tres Leches',
+        'image': 'assets/images/pastel_tres_leches.jpg',
+        'description': 'Clásico pastel esponjoso empapado en tres tipos de leche.',
+      },
+      {
+        'name': 'Pastel de Zanahoria',
+        'image': 'assets/images/pastel_zanahoria.jpg',
+        'description': 'Pastel húmedo con trozos de zanahoria y nueces.',
+      },
+      {
+        'name': 'Cheesecake de Frutos Rojos',
+        'image': 'assets/images/cheesecake_frutos_rojos.jpg',
+        'description': 'Cheesecake cremoso con una capa de frutos rojos frescos.',
+      },
+      {
+        'name': 'Tarta de Manzana',
+        'image': 'assets/images/tarta_manzana.jpg',
+        'description': 'Tarta clásica de manzana con una cubierta de crujiente de canela.',
+      },
     ];
 
     return Scaffold(
@@ -92,13 +119,19 @@ class PastelDetailScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text(
-              'Descripción del producto aquí', // Reemplaza con la descripción real
+              product['description']!,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Acción cuando se agrega al carrito
+                // Aquí puedes implementar la lógica para agregar al carrito
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${product['name']} agregado al carrito'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
               },
               child: Text('Agregar al carrito'),
             ),

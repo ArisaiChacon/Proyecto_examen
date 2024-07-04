@@ -3,18 +3,35 @@ import 'package:flutter/material.dart';
 class CupcakesScreen extends StatelessWidget {
   final List<Map<String, String>> products = [
     {
-      'name': 'Cupcake 1',
-      'image': 'assets/images/cupcakes.jpg',
+      'name': 'Vanilla Cupcake',
+      'image': 'assets/images/vanilla_cupcake.jpg',
       'description': 'Delicious vanilla cupcake with creamy frosting.',
-      'ingredients': 'Flour, sugar, butter, eggs, vanilla, milk'
+      'ingredients': 'Flour, sugar, butter, eggs, vanilla extract, milk',
     },
     {
-      'name': 'Cupcake 2',
-      'image': 'assets/images/cupcakes.jpg',
+      'name': 'Chocolate Cupcake',
+      'image': 'assets/images/chocolate_cupcake.jpg',
       'description': 'Rich chocolate cupcake topped with chocolate ganache.',
-      'ingredients': 'Flour, sugar, butter, eggs, cocoa, milk'
+      'ingredients': 'Flour, sugar, butter, eggs, cocoa powder, milk',
     },
-    // Añade más productos aquí
+    {
+      'name': 'Red Velvet Cupcake',
+      'image': 'assets/images/red_velvet_cupcake.jpg',
+      'description': 'Moist red velvet cupcake with cream cheese frosting.',
+      'ingredients': 'Flour, sugar, butter, eggs, cocoa powder, buttermilk, vinegar, red food coloring',
+    },
+    {
+      'name': 'Lemon Cupcake',
+      'image': 'assets/images/lemon_cupcake.jpg',
+      'description': 'Refreshing lemon cupcake with lemon buttercream.',
+      'ingredients': 'Flour, sugar, butter, eggs, lemon zest, lemon juice, milk',
+    },
+    {
+      'name': 'Strawberry Cupcake',
+      'image': 'assets/images/strawberry_cupcake.jpg',
+      'description': 'Moist strawberry cupcake with fresh strawberry frosting.',
+      'ingredients': 'Flour, sugar, butter, eggs, strawberries, milk',
+    },
   ];
 
   @override
@@ -136,7 +153,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Lógica para agregar al carrito
+               
               },
               child: Text('Agregar al carrito'),
             ),

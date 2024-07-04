@@ -8,32 +8,25 @@ class ShoppingCartScreen extends StatefulWidget {
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   final List<CartItem> cartItems = [
     CartItem(
-      name: 'Video Camera',
-      code: '#247890',
-      price: 849.90,
+      name: 'Tarta de Chocolate',
+      code: '#123456',
+      price: 25.99,
       quantity: 1,
-      imageUrl: 'lib/assets/fresa.webp',
+      imageUrl: 'lib/assets/tarta_chocolate.jpg',
     ),
     CartItem(
-      name: 'Walkman',
-      code: '#367381',
-      price: 249.90,
+      name: 'Pastel de Fresa',
+      code: '#789012',
+      price: 19.99,
       quantity: 2,
-      imageUrl: 'lib/assets/pasteles-de-chocolate.jpeg',
+      imageUrl: 'lib/assets/pastel_fresa.jpg',
     ),
     CartItem(
-      name: 'Turntable',
-      code: '#589001',
-      price: 1449.90,
-      quantity: 4,
-      imageUrl: 'lib/assets/cheecake.jpg',
-    ),
-    CartItem(
-      name: 'Pager',
-      code: '#567190',
-      price: 99.90,
-      quantity: 2,
-      imageUrl: 'lib/assets/pastelin.jpg',
+      name: 'Cheesecake de Frutos del Bosque',
+      code: '#345678',
+      price: 32.50,
+      quantity: 1,
+      imageUrl: 'lib/assets/cheesecake_frutos.jpg',
     ),
   ];
 
@@ -42,6 +35,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Carrito'),
+        backgroundColor: Colors.brown[400], // Color de fondo café para el appbar
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -71,8 +65,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
         },
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.orange,
-        child: SingleChildScrollView(  // <-- Wrap in SingleChildScrollView
+        color: Colors.brown[400], // Color de fondo café para la barra inferior
+        child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
             child: Column(
@@ -83,11 +77,11 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   children: [
                     Text(
                       'TOTAL:',
-                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white), // Texto blanco para contraste
                     ),
                     Text(
                       '\$${calculateTotal().toStringAsFixed(2)}',
-                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white), // Texto blanco para contraste
                     ),
                   ],
                 ),
@@ -95,7 +89,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 ElevatedButton(
                   onPressed: () {},
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.brown[400] ?? Colors.brown),
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.brown[600] ?? Colors.brown), // Botón con tono más oscuro
                     padding: MaterialStateProperty.all<EdgeInsets>(
                       EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
                     ),
@@ -106,7 +100,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 ElevatedButton(
                   onPressed: () {},
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.brown[400] ?? Colors.brown),
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.brown[600] ?? Colors.brown), // Botón con tono más oscuro
                     padding: MaterialStateProperty.all<EdgeInsets>(
                       EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
                     ),
@@ -228,9 +222,10 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Carrito de Compras'),
+        backgroundColor: Colors.brown[400], 
       ),
       body: Center(
-        child: Text('Contenido del carrito de compras'),
+        child: Text('Contenido del carrito de compras', style: TextStyle(fontSize: 20.0)),
       ),
     );
   }

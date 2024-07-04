@@ -4,9 +4,36 @@ class PaysScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> products = [
-      {'name': 'Pay 1', 'image': 'assets/images/pays.jpg'},
-      {'name': 'Pay 2', 'image': 'assets/images/pays.jpg'},
-      // Añade más productos aquí
+      {
+        'name': 'Pay de Manzana',
+        'image': 'assets/images/pay_manzana.jpg',
+        'description': 'Pay clásico de manzana con una cubierta de crujiente.',
+      },
+      {
+        'name': 'Pay de Limón',
+        'image': 'assets/images/pay_limon.jpg',
+        'description': 'Pay refrescante de limón con una capa de merengue.',
+      },
+      {
+        'name': 'Pay de Queso',
+        'image': 'assets/images/pay_queso.jpg',
+        'description': 'Pay cremoso de queso con una base de galleta.',
+      },
+      {
+        'name': 'Pay de Durazno',
+        'image': 'assets/images/pay_durazno.jpg',
+        'description': 'Pay dulce de durazno con un toque de canela.',
+      },
+      {
+        'name': 'Pay de Chocolate',
+        'image': 'assets/images/pay_chocolate.jpg',
+        'description': 'Pay indulgente de chocolate con una base de galleta oreo.',
+      },
+      {
+        'name': 'Pay de Cereza',
+        'image': 'assets/images/pay_cereza.jpg',
+        'description': 'Pay delicioso de cereza con una cubierta de crema batida.',
+      },
     ];
 
     return Scaffold(
@@ -92,13 +119,19 @@ class PayDetailScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text(
-              'Descripción del producto aquí', // Reemplaza con la descripción real
+              product['description']!,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Acción cuando se agrega al carrito
+                // Aquí puedes implementar la lógica para agregar al carrito
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${product['name']} agregado al carrito'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
               },
               child: Text('Agregar al carrito'),
             ),
