@@ -4,33 +4,18 @@ class CupcakesScreen extends StatelessWidget {
   final List<Map<String, String>> products = [
     {
       'name': 'Vanilla Cupcake',
-      'image': 'assets/images/vanilla_cupcake.jpg',
+      'image': 'assets/images/cupcake1.jpg',
       'description': 'Delicious vanilla cupcake with creamy frosting.',
-      'ingredients': 'Flour, sugar, butter, eggs, vanilla extract, milk',
     },
     {
       'name': 'Chocolate Cupcake',
-      'image': 'assets/images/chocolate_cupcake.jpg',
+      'image': 'assets/images/cupcake2.jpg',
       'description': 'Rich chocolate cupcake topped with chocolate ganache.',
-      'ingredients': 'Flour, sugar, butter, eggs, cocoa powder, milk',
     },
     {
       'name': 'Red Velvet Cupcake',
-      'image': 'assets/images/red_velvet_cupcake.jpg',
+      'image': 'assets/images/cupcake3.jpg',
       'description': 'Moist red velvet cupcake with cream cheese frosting.',
-      'ingredients': 'Flour, sugar, butter, eggs, cocoa powder, buttermilk, vinegar, red food coloring',
-    },
-    {
-      'name': 'Lemon Cupcake',
-      'image': 'assets/images/lemon_cupcake.jpg',
-      'description': 'Refreshing lemon cupcake with lemon buttercream.',
-      'ingredients': 'Flour, sugar, butter, eggs, lemon zest, lemon juice, milk',
-    },
-    {
-      'name': 'Strawberry Cupcake',
-      'image': 'assets/images/strawberry_cupcake.jpg',
-      'description': 'Moist strawberry cupcake with fresh strawberry frosting.',
-      'ingredients': 'Flour, sugar, butter, eggs, strawberries, milk',
     },
   ];
 
@@ -87,23 +72,16 @@ class CupcakesScreen extends StatelessWidget {
   }
 }
 
-class ProductDetailScreen extends StatefulWidget {
+class ProductDetailScreen extends StatelessWidget {
   final Map<String, String> product;
 
   ProductDetailScreen({required this.product});
 
   @override
-  _ProductDetailScreenState createState() => _ProductDetailScreenState();
-}
-
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  String selectedSize = 'Small';
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.product['name']!),
+        title: Text(product['name']!),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -111,13 +89,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
-              widget.product['image']!,
+              product['image']!,
               height: 200,
               fit: BoxFit.cover,
             ),
             SizedBox(height: 16),
             Text(
-              widget.product['name']!,
+              product['name']!,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -126,37 +104,33 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
             SizedBox(height: 16),
             Text(
-              widget.product['description']!,
+              product['description']!,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
-            Text(
-              'Ingredients: ${widget.product['ingredients']}',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            DropdownButton<String>(
-              value: selectedSize,
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedSize = newValue!;
-                });
-              },
-              items: <String>['Small', 'Medium', 'Large']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-               
-              },
-              child: Text('Agregar al carrito'),
-            ),
+           ElevatedButton(
+    onPressed: () {
+      // Aquí puedes implementar la lógica para agregar al carrito
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${product['name']} agregado al carrito'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    },
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(Colors.brown), 
+      minimumSize: MaterialStateProperty.all<Size>(Size(120, 32)), 
+    ),
+    child: Text(
+      'Agregar al carrito',
+      style: TextStyle(
+        fontSize: 14, 
+        color: Colors.white, 
+      ),
+    ),
+  ),
+
           ],
         ),
       ),

@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                       // Acción al presionar el icono del carrito
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CartScreen()),
+                        MaterialPageRoute(builder: (context) => ShoppingCartScreen()),
                       );
                     },
                     child: Icon(Icons.shopping_cart, color: Colors.white), // Icono de carrito blanco

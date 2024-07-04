@@ -6,34 +6,20 @@ class PastelesScreen extends StatelessWidget {
     final List<Map<String, String>> products = [
       {
         'name': 'Pastel de Mocha',
-        'image': 'assets/images/pastel_mocha.jpg',
+        'image': 'assets/images/pastel1.jpg',
         'description': 'Delicioso pastel de chocolate con crema de mocha.',
       },
       {
         'name': 'Pastel de Fresas',
-        'image': 'assets/images/pastel_fresas.jpg',
+        'image': 'assets/images/pastel2.jpg',
         'description': 'Pastel suave con capas de crema de fresas frescas.',
       },
       {
         'name': 'Pastel de Tres Leches',
-        'image': 'assets/images/pastel_tres_leches.jpg',
+        'image': 'assets/images/pastel3.jpg',
         'description': 'Clásico pastel esponjoso empapado en tres tipos de leche.',
       },
-      {
-        'name': 'Pastel de Zanahoria',
-        'image': 'assets/images/pastel_zanahoria.jpg',
-        'description': 'Pastel húmedo con trozos de zanahoria y nueces.',
-      },
-      {
-        'name': 'Cheesecake de Frutos Rojos',
-        'image': 'assets/images/cheesecake_frutos_rojos.jpg',
-        'description': 'Cheesecake cremoso con una capa de frutos rojos frescos.',
-      },
-      {
-        'name': 'Tarta de Manzana',
-        'image': 'assets/images/tarta_manzana.jpg',
-        'description': 'Tarta clásica de manzana con una cubierta de crujiente de canela.',
-      },
+     
     ];
 
     return Scaffold(
@@ -123,18 +109,29 @@ class PastelDetailScreen extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Aquí puedes implementar la lógica para agregar al carrito
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('${product['name']} agregado al carrito'),
-                    duration: Duration(seconds: 2),
-                  ),
-                );
-              },
-              child: Text('Agregar al carrito'),
-            ),
+       ElevatedButton(
+    onPressed: () {
+      // Aquí puedes implementar la lógica para agregar al carrito
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${product['name']} agregado al carrito'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    },
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),
+      minimumSize: MaterialStateProperty.all<Size>(Size(120, 32)), 
+    ),
+    child: Text(
+      'Agregar al carrito',
+      style: TextStyle(
+        fontSize: 14, 
+        color: Colors.white, 
+      ),
+    ),
+  ),
+
           ],
         ),
       ),

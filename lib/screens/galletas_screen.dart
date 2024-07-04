@@ -123,18 +123,29 @@ class GalletaDetailScreen extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Aquí puedes implementar la lógica para agregar al carrito
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('${product['name']} agregado al carrito'),
-                    duration: Duration(seconds: 2),
-                  ),
-                );
-              },
-              child: Text('Agregar al carrito'),
-            ),
+           ElevatedButton(
+    onPressed: () {
+      // Aquí puedes implementar la lógica para agregar al carrito
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${product['name']} agregado al carrito'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    },
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(Colors.brown), 
+      minimumSize: MaterialStateProperty.all<Size>(Size(120, 32)), 
+    ),
+    child: Text(
+      'Agregar al carrito',
+      style: TextStyle(
+        fontSize: 14, 
+        color: Colors.white, 
+      ),
+    ),
+  ),
+
           ],
         ),
       ),
