@@ -4,6 +4,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -13,7 +16,11 @@ class LoginScreen extends StatelessWidget {
               alignment: Alignment.center,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: NetworkImage('https://lh5.googleusercontent.com/p/AF1QipPKvE8QWzjNtqX5EuX_uVuKFxTdrnbUkTPIajmE'),
+                backgroundColor: Colors.brown, // Color de fondo café
+                child: Text(
+                  'Logo',
+                  style: TextStyle(fontSize: 24, color: Colors.white),
+                ),
               ),
             ),
             SizedBox(height: 16),
@@ -24,8 +31,13 @@ class LoginScreen extends StatelessWidget {
                   labelText: 'Correo',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(color: Colors.brown), // Borde café
                   ),
-                  prefixIcon: Icon(Icons.email, color: Color.fromARGB(255, 236, 102, 6)),
+                  prefixIcon: Icon(Icons.email, color: Colors.brown), // Icono café
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(color: Colors.brown), // Borde café enfocado
+                  ),
                 ),
               ),
             ),
@@ -37,8 +49,13 @@ class LoginScreen extends StatelessWidget {
                   labelText: 'Contraseña',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(color: Colors.brown), // Borde café
                   ),
-                  prefixIcon: Icon(Icons.lock, color: Color.fromARGB(255, 220, 115, 45)),
+                  prefixIcon: Icon(Icons.lock, color: Colors.brown), // Icono café
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(color: Colors.brown), // Borde café enfocado
+                  ),
                 ),
                 obscureText: true,
               ),
@@ -48,10 +65,10 @@ class LoginScreen extends StatelessWidget {
               width: 250, // Ancho fijo para el botón
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/home');
+                  Navigator.pushReplacementNamed(context, '/home'); // Navegar al HomeScreen
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.brown), // Color de fondo café
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -61,21 +78,71 @@ class LoginScreen extends StatelessWidget {
                     EdgeInsets.symmetric(vertical: 16),
                   ),
                 ),
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 18),
-                  ),
+                child: Text(
+                  'Login',
+                  style: TextStyle(fontSize: 18, color: Colors.white), // Texto blanco
                 ),
               ),
+            ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Acción cuando se presiona el botón de Facebook
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.brown), // Color de fondo café
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                      EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.facebook, color: Colors.white), // Icono de Facebook blanco
+                      SizedBox(width: 8),
+                      Text('Facebook', style: TextStyle(color: Colors.white)),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    // Acción cuando se presiona el botón de Google
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.brown), // Color de fondo café
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                      EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.g_mobiledata, color: Colors.white), // Icono de Google blanco
+                      SizedBox(width: 8),
+                      Text('Google', style: TextStyle(color: Colors.white)),
+                    ],
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 16),
             TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/registro');
               },
-              child: Text('Registrarse'),
+              child: Text('Registrarse', style: TextStyle(color: Colors.brown)), // Texto café
             ),
           ],
         ),

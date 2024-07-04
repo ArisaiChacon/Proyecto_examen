@@ -1,22 +1,83 @@
 import 'package:flutter/material.dart';
-import 'cart_screen.dart'; // Importación directa sin "screens/"
-import 'profile_screen.dart'; // Importación directa sin "screens/"
-import 'product_screen.dart'; // Importación directa sin "screens/"
+import 'cart_screen.dart';
+import 'profile_screen.dart';
+import 'pasteles_screen.dart';
+import 'cupcakes_screen.dart';
+import 'galletas_screen.dart';
+import 'pays_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<Map<String, String>> categories = [
-    {'name': 'Pasteles', 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGob6EWEa_szhEivIquEemsLt-ejMRvxrtmg&s'},
-    {'name': 'Cupcakes', 'image': 'https://www.goya.com/media/7397/coquito-cupcakes.jpg?quality=80'},
-    {'name': 'Galletas', 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8_g2bSzgQCiPScikFCfb3EmkGPPtun_8NKg&s'},
-    {'name': 'Pays', 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-QnkpNa8-PuPOvsMTG9TFF8H68kH3wp2D8Q&s'},
+    {'name': 'Pasteles', 'image': 'assets/images/pasteles.jpg'},
+    {'name': 'Cupcakes', 'image': 'assets/images/cupcakes.jpg'},
+    {'name': 'Galletas', 'image': 'assets/images/galletas.jpg'},
+    {'name': 'Pays', 'image': 'assets/images/pays.jpg'},
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Pastelería: Sabor y arte'),
-    // Color de fondo del AppBar
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(160.0), // Ajustar la altura según sea necesario
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.brown, // Color café para el recuadro
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20.0),
+              bottomRight: Radius.circular(20.0),
+            ),
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Pastelería: Sabor y arte', // Título de la pastelería
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 8.0),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Buscar',
+                        hintStyle: TextStyle(color: Colors.white), // Color café para el texto de sugerencia
+                        prefixIcon: Icon(Icons.search, color: Colors.white), // Icono de búsqueda blanco
+                        filled: true,
+                        fillColor: Colors.brown.shade400, // Color del fondo del TextField
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide.none,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(color: Colors.white), // Bordes visibles al enfocar
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.white), // Color del texto dentro del TextField
+                    ),
+                  ),
+                  SizedBox(width: 8.0), // Espacio entre el TextField y el icono del carrito
+                  GestureDetector(
+                    onTap: () {
+                      // Acción al presionar el icono del carrito
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CartScreen()),
+                      );
+                    },
+                    child: Icon(Icons.shopping_cart, color: Colors.white), // Icono de carrito blanco
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -24,23 +85,9 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Buscar',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0), // Bordes redondeados
-                    borderSide: BorderSide(color: Colors.orange), // Color del borde
-                  ),
-                  prefixIcon: Icon(Icons.search, color: Colors.orange), // Color del ícono del prefijo
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0), // Bordes redondeados cuando está enfocado
-                    borderSide: BorderSide(color: Colors.orange), // Color del borde cuando está enfocado
-                  ),
-                ),
-              ),
               SizedBox(height: 16),
-              Image.network(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqAsrnHtegIGYPBNQ2qhoHyVq5e2Z3J1vsGw&s',
+              Image.asset(
+                'assets/images/pasteles.jpg',
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -63,21 +110,41 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProductScreen(category: categories[index]['name']!),
-                        ),
-                      );
+                      switch (index) {
+                        case 0:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => PastelesScreen()),
+                          );
+                          break;
+                        case 1:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CupcakesScreen()),
+                          );
+                          break;
+                        case 2:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => GalletasScreen()),
+                          );
+                          break;
+                        case 3:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => PaysScreen()),
+                          );
+                          break;
+                      }
                     },
                     child: Card(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.network(
+                          Image.asset(
                             categories[index]['image']!,
-                            height: 150, // Aumento del tamaño de la imagen
+                            height: 150,
                             fit: BoxFit.cover,
                           ),
                           SizedBox(height: 8),
@@ -95,57 +162,6 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: 16),
-              Text(
-                'Explora nuestras deliciosas opciones:',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      Image.network(
-                        'https://lh5.googleusercontent.com/p/AF1QipPKvE8QWzjNtqX5EuX_uVuKFxTdrnbUkTPIajmE',
-                        height: 200, // Aumento del tamaño de la imagen
-                        width: 200, // Aumento del tamaño de la imagen
-                        fit: BoxFit.cover,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Pastelería A',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'Ubicación A',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Image.network(
-                        'https://lh5.googleusercontent.com/p/AF1QipPKvE8QWzjNtqX5EuX_uVuKFxTdrnbUkTPIajmE',
-                        height: 200, // Aumento del tamaño de la imagen
-                        width: 200, // Aumento del tamaño de la imagen
-                        fit: BoxFit.cover,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Pastelería B',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'Ubicación B',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            
             ],
           ),
         ),
@@ -170,17 +186,16 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
         currentIndex: 0,
-        selectedItemColor: Color.fromARGB(255, 236, 102, 6), // Color naranja cuando está seleccionado
-        unselectedItemColor: Colors.black, // Color negro o café cuando no está seleccionado
+        selectedItemColor: Color.fromARGB(255, 236, 102, 6),
+        unselectedItemColor: Colors.black,
         onTap: (int index) {
           switch (index) {
             case 0:
-              // Inicio (ya estamos en la página principal)
               break;
             case 1:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CartScreen()),
+                MaterialPageRoute(builder: (context) => ShoppingCartScreen()),
               );
               break;
             case 2:
